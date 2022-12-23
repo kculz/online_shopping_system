@@ -4,10 +4,10 @@ const router = express.Router()
 const {verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin} = require('../middleware/verifyToken')
 const freightController = require('../controllers/freightController')
 
-    router.post('/add', verifyTokenAndAdmin, freightController.createCart)
-    router.put('/update/:id', verifyTokenAndAdmin, freightController.updateCart )
-    router.delete('/remove/:id', verifyTokenAndAdmin, freightController.removeCart )
-    router.get('/find/:id',verifyTokenAndAdmin, freightController.findCart)
-    router.get('/',verifyTokenAndAdmin, freightController.findAllCarts)
+    router.post('/add', verifyTokenAndAdmin, freightController.createFreight)
+    router.put('/update/:id', verifyTokenAndAdmin, freightController.updateFreight )
+    router.delete('/remove/:id', verifyTokenAndAdmin, freightController.removeFreight )
+    router.get('/find/:id',verifyTokenAndAdmin, freightController.findFreight)
+    router.get('/',verifyTokenAndAdmin, freightController.findAllFreights)
 
 module.exports = router

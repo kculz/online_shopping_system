@@ -14,6 +14,8 @@ const PORT = process.env.PORT
 const usersRoute = require('./routes/users')
 const authRoute = require('./routes/auth')
 const productRoute = require('./routes/products')
+const ecocashPaymentRoute = require('./routes/ecocash')
+const stripePaymentRoute = require('./routes/stripe')
 
 mongoose.connect(process.env.MONGO_URI)
 .then(()=>{
@@ -26,6 +28,8 @@ mongoose.connect(process.env.MONGO_URI)
 app.use('/users',authRoute) 
 app.use('/users',usersRoute)
 app.use('/products',productRoute)
+app.use('/payments', stripePaymentRoute)
+app.use('/payments', ecocashPaymentRoute)
 
 app.listen(process.env.PORT,()=> {
     console.log(`Port running on http://localhost:${PORT}`)
