@@ -17,6 +17,7 @@ const productRoute = require('./routes/products')
 const ecocashPaymentRoute = require('./routes/ecocash')
 // const stripePaymentRoute = require('./routes/stripe')
 
+// db connection string to mongo atlas
 mongoose.connect(process.env.MONGO_URI)
 .then(()=>{
     console.log('db connected')
@@ -24,6 +25,7 @@ mongoose.connect(process.env.MONGO_URI)
 .catch((err)=>{
     console.log('something went wrong!' + err)
 })
+
 
 app.use('/users',authRoute) 
 app.use('/users',usersRoute)

@@ -1,8 +1,40 @@
 const Product = require('../models/Product')
-
+const multer = require('multer')
 // create product
+//init products uploads storage file 
+const Storage = multer.diskStorage({
+    destination: "./uploads/products",
+    filename: (req,res,cb) => {
+        cb(null,  filename)
+    }
+})
+
+const upload =  multer({
+    storage: Storage
+}).single('productImg')
+
 const createProduct = async (req,res) => {
-    const newProduct = new Product(req.body)
+    upload(req,res,(err)=> {
+        if(err){
+            console.log(err)
+        }else{
+            const newProduct = new Product({
+                title: req.body.title,
+                desc: req.body.desc,
+                img: {
+                    data: req.file.filename,
+                    contentType: 'image/jpeg/png/jpg '
+                },
+                category: req.body.category,
+                weight: req.body.weight,
+                lenght: req.body.lenght,
+                width: req.body.width,
+                color: req.body.color,
+                price: req.body.price,
+            })
+        }
+        
+    })
 
     try {
         const savedProduct = await newProduct.save()
