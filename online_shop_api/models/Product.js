@@ -7,7 +7,7 @@ const productSchema = new mongoose.Schema({
     desc: {type: String, required: true},
     img: {data: Buffer,contentType: String},
     category: {type: Array},
-    weight: {type: String},
+    weight: {type: Number},
     lenght: {type: Number},
     width: {type: Number},
     color: {type: String},
