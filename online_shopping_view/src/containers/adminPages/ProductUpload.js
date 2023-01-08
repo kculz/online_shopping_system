@@ -26,6 +26,7 @@ const ProductUpload = () => {
 
   const url = `http://localhost:5000/products/add`
   const handleSubmit = async (e) => {
+    e.preventDefault()
     try {
       const res = await axios.post(url,product)
       console.log(res.data)
@@ -33,7 +34,6 @@ const ProductUpload = () => {
       console.log(err)
     }
 
-    e.preventDefault()
 
   }
 
