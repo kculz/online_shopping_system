@@ -25,6 +25,9 @@ const Sign_in = () => {
     try {
       const res = await axios.get(url, user)
       console.log(res.data)
+      const data = await res.json()
+      data.user && alert('User authenticated')
+      
     } catch (err) {
       console.log(err)
     }
