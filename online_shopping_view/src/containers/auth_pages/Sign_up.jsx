@@ -1,10 +1,5 @@
 import { React,useState } from 'react'
 import axios from 'axios'
-
-
-
-
-
 import {FaApple} from 'react-icons/fa'
 import {FcGoogle} from 'react-icons/fc'
 import {TiArrowBackOutline} from 'react-icons/ti'

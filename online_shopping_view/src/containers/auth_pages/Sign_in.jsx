@@ -1,10 +1,14 @@
 import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+
+import { login } from '../../redux/reducers/authApiCalls'
 
 import {FaApple} from 'react-icons/fa'
 import {FcGoogle} from 'react-icons/fc'
 import {TiArrowBackOutline} from 'react-icons/ti'
+
 
 const Sign_in = () => {
   const [user, setUser] = useState({
@@ -18,21 +22,15 @@ const Sign_in = () => {
       return { ...prev, [name]: value}
     })
   } 
+  const dispatch = useDispatch()
 
-  const url = `http://localhost:5000/users/login`
   const handleSubmit = async (e) => {
     e.preventDefault()
-    try {
-      const res = await axios.get(url, user)
-      console.log(res.data)
-      const data = await res.json()
-      data.user && alert('User authenticated')
-      
-    } catch (err) {
-      console.log(err)
-    }
+    login(dispatch)
+    
 
   }
+
   return (
     <form className='flex bg-white px-10 py-10  justify-center items-center' onSubmit={handleSubmit}>
       <div className=' rounded-lg p-10 flex flex-col gap-5 w-[450px] shadow-gray-700 shadow-2xl'>
