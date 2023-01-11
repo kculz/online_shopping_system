@@ -1,10 +1,14 @@
 import { combineReducers } from "redux";
 import { productReducer } from "./productReducer";
-import {userReducer} from "./userAuthReducer"
+import {loginFailure,loginSuccess,loginStart} from "./userAuthReducer"
 
 const reducers = combineReducers({
     allProducts:productReducer,
-    user: userReducer
+    user: {
+        loginFailure,
+        loginStart,
+        loginSuccess
+    }
 })
 
 export default reducers
