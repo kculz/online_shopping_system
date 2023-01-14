@@ -17,14 +17,14 @@ function App() {
       <Header />
       <Navbar />
       <Routes>
-        {/* <Route path='/' element={<Hero />} />
+        <Route path='/' element={<Hero />} />
         <Route exact path='/signin' element={<Sign_in />} />
+        <Route exact path='/signup' element={<Sign_up />} />
         <Route exact path='/shop' element={<ProductsList />} />
         <Route exact path='/products/:productId' element={<ProductDetails />} />
-        <Route exact path='*' element={<NotFound />} /> */}
+        <Route exact path='*' element={<NotFound />} />
       </Routes>
       {/* <ProductUpload /> */}
-      <Sign_in />
       <Footer />
     
     </BrowserRouter>

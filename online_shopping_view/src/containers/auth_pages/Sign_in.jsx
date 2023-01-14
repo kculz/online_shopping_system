@@ -3,7 +3,6 @@ import React from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { login } from '../../redux/reducers/authApiCalls'
 
 import {FaApple} from 'react-icons/fa'
 import {FcGoogle} from 'react-icons/fc'
@@ -26,7 +25,6 @@ const Sign_in = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    login(dispatch)
     
 
   }

@@ -3,6 +3,7 @@ import axios from 'axios'
 import {FaApple} from 'react-icons/fa'
 import {FcGoogle} from 'react-icons/fc'
 import {TiArrowBackOutline} from 'react-icons/ti'
+import { useNavigate } from 'react-router-dom'
 
 const Sign_up = () => {
   const [user, setUser] = useState({
@@ -20,11 +21,13 @@ const Sign_up = () => {
     })
   }
 
+  const navigate = useNavigate()
   const url = `http://localhost:5000/users/register`
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
       const res = await axios.post(url,user)
+      navigate('/signup')
       console.log(res.data)
     } catch (err) {
       console.log(err)
