@@ -1,7 +1,6 @@
 import axios from 'axios'
-import React from 'react'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import {useNavigate} from 'react-router-dom'
 
 
 import {FaApple} from 'react-icons/fa'
@@ -21,11 +20,23 @@ const Sign_in = () => {
       return { ...prev, [name]: value}
     })
   } 
-  const dispatch = useDispatch()
 
+  const nav = useNavigate()
+  const url = `http://localhost:5000/users/login`
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
+    try {
+      const res = await axios.post(url,user,{
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('accessToken')
+        }
+      })
+      nav('/shop')
+      console.log(res.data)
+    } catch (err) {
+      console.log(err.response.data)
+    }
 
   }
 
