@@ -33,7 +33,7 @@ app.use('/users',authRoute)
 app.use('/users',usersRoute)
 app.use('/products',productRoute)
 // app.use('/payments', stripePaymentRoute)
-// app.use('/payments', ecocashPaymentRoute)
+app.use('/payments', ecocashPaymentRoute)
 
 app.listen(process.env.PORT || PORT,()=> {
     console.log(`Port running on http://localhost:${PORT}`)

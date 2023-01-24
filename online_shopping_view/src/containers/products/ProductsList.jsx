@@ -1,36 +1,20 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-
-import {TbBuildingWarehouse} from 'react-icons/tb'
-import { IoPricetags } from 'react-icons/io5'
-
-import pic from '../assets/images/product.jpeg'
+import { BiDollar } from 'react-icons/bi'
 
 const ProductsList = () => {
-    const products = useSelector((state) => state.allProducts.products)
-    const {id,title,cat} = products
-    console.log(products)
+    
   return (
-    <div className='flex flex-wrap gap-5 justify-center my-5'>
-    <div  className='shadow-gray-400 shadow-2xl w-72  rounded-2xl mt-3 overflow-hidden cursor-pointer'>
-           <img src={pic} alt="product" />
-           <div className='px-2 py-3'>
-           <p className="text-gray-500 text-lg">{title}</p>
-          <div className="flex flex-col justify-start items-start px-2 py-2">
-              <div className="flex gap-2">
-                {/* <TbBuildingWarehouse size={30} color='#309CFB' /> */}
-                <div className="flex gap-4 ">
-                {/* <p className='text-xl text-blue-500'>Quantity </p> */}
-                <p className="text-xl text-blue-500">Available in-stock</p>
-                </div>
-              </div>
-              <div className='flex gap-2 mt-1'>
-                <IoPricetags size={25} color='#309CFB' />
-                <p className='text-lg text-blue-500'>$ 20.00</p>
-              </div>
+    <div className='grid grid-cols-4 place-items-stretch px-10 py-5'>
+      <div className='shadow-2xl rounded-2xl'>
+        <img src="https://assets.stickpng.com/images/5f49277468ecc70004ae7083.png" alt="" className=''/>
+        <div className='px-3 flex flex-col '>
+          <h1 className='text-2xl text-gray-900'>Buy iPhone SE</h1>
+          <p className='text-gray-700 text-lg'>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+          <div className='flex  items-center my-3 text-2xl'>
+          <BiDollar  size={30}/> <p>200.00</p>
           </div>
-           </div>
-          </div>
+        </div>
+      </div>
     </div>
   )
 }
