@@ -8,33 +8,24 @@ paynow.resultUrl = "http://example.com/gateways/paynow/update";
 paynow.returnUrl = "http://example.com/return?gateway=paynow&merchantReference=1234";
 
 router.post('/ecocash',(req,res)=>{
-    let payment = paynow.createPayment('jdbvjhd', 'munyamakudzai095@gmail.com')
-    payment.add('router', 35)
-    paynow.sendMobile(payment, '0774444444', 'ecocash').then((response)=>{
-        if(!response.success){
-            res.status(401).json('something went wrong')
-            console.log('something went wrong')
-        }else{
+    
+    let payment = paynow.createPayment('payment id', 'munyamakudzai095@gmail.com')
+    payment.add('router', 1)
+    paynow.sendMobile(payment, '0774181243', 'ecocash')
+    .then((response)=>{
+            !response.success && res.status(401).json('something went wrong')
             let pollUrl = response.pollUrl;
             let status  =  (paynow.pollTransaction(pollUrl))
-            if(status){
+            !status && res.status(200).json('error')
                 res.status(200).json(status)
-                 console.log(status)
-            }else{
-                res.status(200).json('error')
-                 console.log('error')
-            }
-            
-            // !status.paid() && res.status(500).json('not paid')
-            
-        }
-    }).catch((err)=> {
-        res.status(500).json(err)
-        console.log(err)
+                
+            }).catch((err)=> {
+                res.status(500).json(err)
+                console.log(err)
     })
-   
+        }
+    )
 
-})
 
 
 module.exports = router

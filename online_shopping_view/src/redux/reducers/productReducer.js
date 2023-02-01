@@ -1,14 +1,12 @@
 import { ActionTypes } from "../constants/actionTypes";
+import axios from 'axios'
 
-const initState = {
-    products:[{}]
-}
-
-export const productReducer = (state = initState, {type,payload}) => {
-    switch (type) {
-        case ActionTypes.SET_PRODUCTS :
-            return state
-        default:
-            return state 
+export const listProducts = (category ='') => async (dispatch) => {
+    try {
+        dispatch({type:ActionTypes.PRODUCT_LIST_REQUEST});
+        const {data} = await axios.get(`http://localhost:5000/products?category`+ category);
+        dispatch({type:ActionTypes.PRODUCT_LIST_SUCCESS, payload: data});
+    } catch (err) {
+        dispatch({type:ActionTypes.PRODUCT_LIST_FAIL, payload: err.message})
     }
 }
