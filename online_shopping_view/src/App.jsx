@@ -8,11 +8,10 @@ function App() {
 
   return (
     <div className="">
-
      <BrowserRouter>
-      <Navbar />
+     <Navbar />
       <Routes>
-         <Route exact path='/' element={<Hero />} />
+         <Route  path='/' element={<Hero />} />
          <Route path='/products' element={<ProductsList />} />
      
       </Routes>

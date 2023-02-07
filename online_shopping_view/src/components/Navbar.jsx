@@ -27,7 +27,7 @@ const Navbar = () => {
         // },
     ]
   return (
-    <div className='h-20 fixed bg-blue-700 w-screen '>
+    <div className='h-20 bg-blue-600 w-screen '>
       <ul className='flex flex-row-reverse gap-4 px-10 bg-blue-500 py-1'>
         <li>
             <a href="http://" target="_blank" rel="noopener noreferrer"> <BsTwitter color='white'/></a>

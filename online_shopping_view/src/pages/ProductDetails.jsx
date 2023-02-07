@@ -7,7 +7,7 @@ const ProductDetails = (id) => {
   const {data, isLoading,error, isFetching} = useGetSingleProductQuery()
   return (
     <div>
-      Product details
+      Product deta
     </div>
   )
 }
