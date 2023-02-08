@@ -7,7 +7,7 @@ const productsController = require('../controllers/productsController')
     router.post('/add', verifyTokenAndAdmin, productsController.createProduct)
     router.put('/update/:id', verifyTokenAndAdmin, productsController.updateProduct )
     router.delete('/remove/:id', verifyTokenAndAdmin, productsController.removeProduct )
-    router.get('/find/:id', productsController.findProduct)
+    router.get('/:id', productsController.findProduct)
     router.get('/', productsController.findAllProducts)
 
 module.exports = router
