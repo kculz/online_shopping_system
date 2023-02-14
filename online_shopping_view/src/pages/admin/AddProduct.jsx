@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useCreateProductMutation } from '../../redux/features/productsApi'
 
@@ -12,10 +13,13 @@ const AddProduct = () => {
 
   
   }
-  const [createProduct, createProductResult] = useCreateProductMutation()
-  const handleSubmit = (e) => {
+  // const [createProduct, createProductResult] = useCreateProductMutation()
+  const handleSubmit = async (e) => {
     e.preventDefault()
-   createProduct({products})
+    const response = await axios.post('http://localhost:5000/products/add').then(()=> {
+      console.log('good' + response.data)
+    }).catch(err=> console.log(err))
+  //  createProduct({products})
 
   }
   return (

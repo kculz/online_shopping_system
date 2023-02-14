@@ -4,9 +4,9 @@ const router = express.Router()
 const {verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin} = require('../middleware/verifyToken')
 const productsController = require('../controllers/productsController')
 
-    router.post('/add', verifyTokenAndAdmin, productsController.createProduct)
-    router.put('/update/:id', verifyTokenAndAdmin, productsController.updateProduct )
-    router.delete('/remove/:id', verifyTokenAndAdmin, productsController.removeProduct )
+    router.post('/add', productsController.createProduct)
+    router.put('/update/:id', productsController.updateProduct )
+    router.delete('/remove/:id', productsController.removeProduct )
     router.get('/:id', productsController.findProduct)
     router.get('/', productsController.findAllProducts)
 

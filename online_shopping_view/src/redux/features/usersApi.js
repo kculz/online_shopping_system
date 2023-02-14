@@ -1,40 +1,32 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 
 export const usersApi = createApi({
-    reducerPath: "usersApi",
+    reducerPath: "userApi",
     baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000"}),
     endpoints: (builder) => ({
-        getAllUser: builder.query({
+        getAllUsers: builder.query({
             query: () => "users"
         }),
         userLogin: builder.query({
             query: (email) => ({
                 url: `users/${email}`,
                 headers: ''
-            }),
+            }) 
         }),
-        registerUser: builder.mutation({
-            query: ({firstname, lastname, username, email, password}) => ({
-                url: "users/register",
+        userRegistration: builder.mutation({
+            query: (data) => ({
+                url: "users/registration",
                 method: "POST",
-                body: {firstname,lastname,username,email,password}
+                body: {data}
             })
         }),
-        updateUser: builder.mutation({
-            query: ({id,...rest}) =>({
-                url: "users/edit",
-                method: "PUT",
-                body: {...rest}
-            })
-        }),
-        deleteUser: builder.mutation({
+        deleteuser: builder.mutation({
             query: (id) => ({
                 url: `users/remove/${id}`,
-                method: "PUT",
+                method: "DELETE",
             })
         })
     })
 })
 
-
-export const { useGetAllUserQuery, useUserLoginQuery, useRegisterUserMutation, useUpdateUserMutation, useDeleteUserMutation } = usersApi
+export const { useGetAllUsersQuery, useDeleteuserMutation, useUserLoginQuery, useUserRegistrationMutation} = usersApi

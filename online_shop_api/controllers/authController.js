@@ -7,6 +7,7 @@ const loginUser = async (req,res) => {
         !user && res.status(404).json('User not found')
         
         !req.body.password === user.password && res.status(401).json('Wrong password')
+        
             const accessToken =  jwt.sign({
                 id: user._id,
                 isAdmin: user.isAdmin
@@ -16,6 +17,7 @@ const loginUser = async (req,res) => {
             )
             const {password, ...other} = user._doc
             res.status(200).json({user: other, accessToken})
+            res.headers('x-auth', accessToken).send()
          }
     
 const registerUser = async (req,res) => {
@@ -31,6 +33,7 @@ const registerUser = async (req,res) => {
         res.status(201).json(savedUser)
         console.log(savedUser)
     } catch (error) {
+        res.status(401).json(error)
         console.log(error)
     }
 }

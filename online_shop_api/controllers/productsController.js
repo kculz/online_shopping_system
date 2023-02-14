@@ -14,15 +14,11 @@ const upload =  multer({
 }).single('productImg')
 
 const createProduct = async (req,res) => {
-    upload(req,res,(err)=> {
-        if(err){
-            console.log(err)
-        }else{
             const newProduct = new Product({
                 title: req.body.title,
                 desc: req.body.desc,
                 img: {
-                    data: req.file.filename,
+                    data: req.body.img,
                     contentType: 'image/jpeg/png/jpg '
                 },
                 category: req.body.category,
@@ -32,15 +28,13 @@ const createProduct = async (req,res) => {
                 color: req.body.color,
                 price: req.body.price,
             })
-        }
-        
-    })
-
     try {
         const savedProduct = await newProduct.save()
         res.status(201).json(savedProduct)
+        console.log(savedProduct)
     } catch (error) {
         res.status(500).json(error)
+        console.log(error)
     }
 }
 
