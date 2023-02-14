@@ -17,7 +17,6 @@ const loginUser = async (req,res) => {
             )
             const {password, ...other} = user._doc
             res.status(200).json({user: other, accessToken})
-            res.headers('x-auth', accessToken).send()
          }
     
 const registerUser = async (req,res) => {

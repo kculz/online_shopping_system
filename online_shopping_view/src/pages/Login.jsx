@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-
+import {useNavigate} from 'react-router-dom'
 // import { useUserLoginQuery } from '../redux/features/usersApi'
 
 const Login = () => {
@@ -10,15 +10,18 @@ const Login = () => {
         const {name,value} = e.target
         setUser(userInfo => ({...userInfo, [name]:value}))
     }
+
+    const navigate = useNavigate()
     const handleSubmit = async (e) => {
         e.preventDefault()
         const response = await axios.post(`http://localhost:5000/users/login`, user)
-        response === null && console.log(null)
-        .then(()=> {
-          console.log(response)
+        .then((response)=> {
+          console.log(response.data)
+          navigate("/products")
+          
         })
         .catch(err => {
-          console.log(err.response)
+          console.log(err.data)
         })
     }
   return (
