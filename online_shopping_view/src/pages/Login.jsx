@@ -38,7 +38,7 @@ const Login = () => {
           <input type="password" name="password" id="password" placeholder="Enter password" className='input-style' onChange={handleChange}/>
         </div>
         
-        <input type="submit" value="Add" className='bg-blue-600 rounded-xl px-8 py-3 text-white text-xl w-full'/>
+        <input type="submit" value="Add" className='btn-full'/>
       </form>
     </div>
   )

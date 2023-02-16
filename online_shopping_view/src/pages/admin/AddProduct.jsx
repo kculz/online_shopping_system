@@ -14,7 +14,11 @@ const AddProduct = () => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const response = await axios.post('http://localhost:5000/products/add',products).then((response)=> {
+    const response = await axios.post('http://localhost:5000/products/add',products,{
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    }).then((response)=> {
       console.log('good' + response.data)
     }).catch(err=> console.log(err))
 
@@ -22,7 +26,7 @@ const AddProduct = () => {
   return (
     <div className='px-10 flex flex-col justify-center items-center'>
       <h1 className="text-center text-3xl text-gray-700">Add new product</h1>
-      <form className=" border shadow-2xl bg-white rounded-3xl px-7 mt-10 w-[500px] h-auto flex flex-col gap-6 py-5 justify-center items-center " onSubmit={handleSubmit}>
+      <form encType='multipart/form-data' className=" border shadow-2xl bg-white rounded-3xl px-7 mt-10 w-[500px] h-auto flex flex-col gap-6 py-5 justify-center items-center " onSubmit={handleSubmit}>
         <div className="flex justify-center items-center gap-3">
           <input type="text" name="title" id="title" placeholder="Title" className='input-style' onChange={handleChange}/>
           <input type="text" name="desc" id="desc" placeholder="Desc" className='input-style' onChange={handleChange}/>
@@ -41,7 +45,7 @@ const AddProduct = () => {
         </div>
         <div className="flex justify-center items-center gap-3">
           <legend>
-          <input type="file" name="image" id="image" placeholder="Image Upload" className='' onChange={handleChange}/>
+          <input type="file" name="img" id="img" placeholder="Image Upload" className='' onChange={handleChange}/>
           </legend>
         </div>
        

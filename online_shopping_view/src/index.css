@@ -9,4 +9,7 @@
     .input-style{
         @apply rounded-xl shadow-xl border border-blue-500 px-5 py-3
     }
+    .btn-full{
+        @apply bg-blue-600 hover:bg-blue-600/80 rounded-xl px-8 py-3 text-white text-xl w-full 
+    }
 }

@@ -1,42 +1,4 @@
 const Product = require('../models/Product')
-const multer = require('multer')
-// create product
-//init products uploads storage file 
-const Storage = multer.diskStorage({
-    destination: "./uploads/products",
-    filename: (req,res,cb) => {
-        cb(null,  filename)
-    }
-})
-
-const upload =  multer({
-    storage: Storage
-}).single('productImg')
-
-const createProduct = async (req,res) => {
-            const newProduct = new Product({
-                title: req.body.title,
-                desc: req.body.desc,
-                img: {
-                    data: req.body.img,
-                    contentType: 'image/jpeg/png/jpg '
-                },
-                category: req.body.category,
-                weight: req.body.weight,
-                lenght: req.body.lenght,
-                width: req.body.width,
-                color: req.body.color,
-                price: req.body.price,
-            })
-    try {
-        const savedProduct = await newProduct.save()
-        res.status(201).json(savedProduct)
-        console.log(savedProduct)
-    } catch (error) {
-        res.status(500).json(error)
-        console.log(error)
-    }
-}
 
 // update Product
 const updateProduct = async (req,res) => {
@@ -93,7 +55,6 @@ const findAllProducts = async (req,res) => {
     }
 }
 module.exports = {
-    createProduct,
     updateProduct,
     removeProduct,
     findProduct,
