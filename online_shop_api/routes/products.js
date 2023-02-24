@@ -9,7 +9,7 @@ const {verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin} = require(
 const productsController = require('../controllers/productsController')
 
 const storage = multer.diskStorage({
-    destination: "uploads",
+    destination: "../online_shopping_view/src/uploads/",
         filename: (req, file, cb) => {
         cb(null, Date.now() + path.extname( file.originalname))
     }
@@ -21,10 +21,7 @@ router.post('/add', upload.single("img"), async (req,res) => {
             const newProduct = new Product({
                 title: req.body.title,
                 desc: req.body.desc,
-                img: {
-                    data: fs.readFileSync("uploads/" + req.file.filename),
-                    contentType: "image/png"
-                },
+                img: fs.readFileSync(path.join(__dirname + '/../online_shopping_view/src/uploads/' + req.file.filename)),  
                 category: req.body.category,
                 weight: req.body.weight,
                 length: req.body.length,

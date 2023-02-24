@@ -13,12 +13,10 @@ const ProductsList = () => {
           <div className='grid grid-cols-4 place-items-center justify-center items-center gap-10'>
             {
               data?.map((item) => {
-                const base64String = btoa(
-                  String.fromCharCode(...new Uint32Array(item.img.data))
-                )
+
                 return(
                   <div key={item._id} className='border shadow-2xl rounded-xl flex flex-col justify-center items-center p-5 mt-3'>
-                    <img src={`data:image/png;base64, ${base64String}`} alt="product"  />
+                    <img src={`${item.img}`} alt="product"  />
                     <div className="flex px-2 gap-2 my-2">
                       <h1>{item.title}</h1>
                       <p>{item.price}</p>
